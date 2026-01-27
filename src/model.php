@@ -4,7 +4,7 @@ function dbConnect()
 {
     // Connexion à la base de données
     try {
-        $database = new PDO('mysql:host=localhost;dbname=annee2_ap2_avbn;charset=utf8', 'root', '');
+        $database = new PDO('mysql:host=localhost;dbname=annee2_ap1_avbn;charset=utf8', 'root', '');
 
         return $database;
     } catch (Exception $e) {
