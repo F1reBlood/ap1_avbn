@@ -1,6 +1,6 @@
 <?php ob_start(); ?>
 <h1>Le super blog de l'AVBN !</h1>
-<p>Derniers billets du blog :</p>
+<h2 class="page-title">Derniers posts du blog :</h2>
 
 <?php
 foreach ($posts as $post) {
@@ -13,7 +13,7 @@ foreach ($posts as $post) {
      <p>
          <?= nl2br(htmlspecialchars($post['content'])); ?>
          <br />
-         <em><a href="index.php?action=post&id=<?= urlencode($post['id']) ?>">Commentaires</a></em>
+         <a href="index.php?action=post&id=<?= urlencode($post['id']) ?>" class="btn-comment">Commentaires</a>
      </p>
  </div>
 <?php

@@ -44,13 +44,11 @@ header {
     left: 0;
     width: 100%;
     height: 70px;
-    background-color: #1e1e1e;
+    background-color: #ff7f50; /* corail orangé, chaleureux */
     color: white;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
-
     padding: 0 30px;
     z-index: 1000;
 }
@@ -72,8 +70,9 @@ header nav a:hover {
 }
 
 header nav .logout {
-    color: #ff6b6b;
+    color: #ffd700; /* doré pour mettre en valeur */
 }
+
 
 /* ================= CONTENU PRINCIPAL ================= */
 
@@ -165,4 +164,298 @@ form button:hover {
 .site-title {
     color: white;          /* même couleur que le header */
     text-decoration: none;   /* enlève le soulignement */
+}
+
+/* ================= BOUTONS ================= */
+
+.btn {
+    display: inline-block;
+    padding: 8px 14px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.9em;
+    cursor: pointer;
+    border: none;
+}
+
+/* Bouton principal (commentaires) */
+/* Bouton pour les commentaires sous chaque post */
+.btn-comment {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 4px;
+    background-color: #ffd27f;      /* gris doux */
+    color: #333;
+    text-decoration: none;
+    font-size: 0.9em;
+    margin-top: 10px;            /* espace au-dessus */
+    margin-right: 5px;           /* espace entre boutons si plusieurs */
+    transition: background 0.3s;
+}
+
+.btn-comment:hover {
+    background-color: #ffbf40;      /* fonce légèrement au survol */
+}
+
+
+/* Bouton secondaire (retour) */
+.btn-secondary {
+    background-color: #4da6ff; /* bleu doux */
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #1a8cff; /* bleu plus prononcé au survol */
+}
+
+
+/* Bouton retour positionné */
+.btn-back {
+    position: fixed;
+    top: 90px; /* sous le header */
+    left: 20px;
+
+    display: block;  /* force un bloc, donc retour à la ligne automatique */
+    margin-bottom: 20px; /* espace après le bouton */
+}
+
+/* ================= TITRES ================= */
+
+.page-title {
+    text-align: center;
+    font-size: 1.3em;
+    margin: 30px 0;
+    color: #222;
+}
+
+/* ================= COMMENTAIRES ================= */
+h2 {
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    color: #222;
+}
+
+.comment-section {
+    width: 70%;
+    margin: auto;
+    max-height: 400px;       /* hauteur max pour le scroll */
+    overflow-y: auto;        /* défilement vertical si trop de commentaires */
+    border: 1px solid #ffcc80;  /* doré léger */
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #fffaf0;  /* très léger crème */
+}
+
+.comment {
+    padding: 10px 15px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.comment p:first-child {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.comment p:last-child {
+    margin: 0;
+}
+
+/* ================= FORMULAIRE ================= */
+.comment-form {
+    width: 70%;
+    max-width: 500px;
+    margin: 30px auto;
+    padding: 20px;
+    border-radius: 8px;
+    background: linear-gradient(145deg, #fff1e6, #ffe6cc); /* fond doux */
+    border: 1px solid #ffcc99; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    /* important pour supprimer le gris hérité */
+    color: #222;
+}
+
+.comment-form * {
+    background: transparent; /* supprime tout fond hérité */
+    color: #222;             /* texte noir foncé */
+    box-shadow: none;        /* supprime ombres par défaut */
+}
+
+.comment-form label {
+    display: block;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.comment-form textarea {
+    width: 100%;
+    min-height: 80px;
+    padding: 8px;
+    margin-top: 5px;
+    resize: vertical;
+    border: 1px solid #ffcc99;
+    border-radius: 4px;
+    background-color: #fff7f0; /* léger fond harmonisé */
+}
+
+.comment-form input[type="submit"] {
+    margin-top: 15px;
+    padding: 10px 25px;
+    background-color: #ff8c00;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+
+    /* CENTRAGE */
+    width: 50%;   /* ou 40% selon la taille désirée */
+    display: block;
+    margin: 15px auto 0 auto; /* top margin + centrage */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.comment-form input[type="submit"]:hover {
+    background-color: #e67300;
+}
+
+.comment-form h2 {
+    text-align: center;
+    margin-bottom: 15px;
+    color: #222;
+}
+
+.comment-form label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.comment-form textarea {
+    width: 100%;
+    min-height: 80px;
+    padding: 8px;
+    margin-top: 5px;
+    resize: vertical;
+}
+
+.comment-form input[type="submit"] {
+    margin-top: 15px;
+    padding: 10px 15px;
+    background-color: #0066cc;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.comment-form input[type="submit"]:hover {
+    background-color: #004c99;
+}
+
+.comment-form {
+    width: 70%;
+    max-width: 500px;
+    margin: 30px auto;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #f4f4f4;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+
+    display: flex;           /* flex container */
+    flex-direction: column;  /* éléments empilés verticalement */
+    align-items: center;     /* centrage horizontal de tous les enfants */
+}
+
+.comment-form h2 {
+    text-align: center;
+    margin-bottom: 15px;
+    color: #222;
+}
+
+.comment-form label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+    text-align: center;      /* centre le texte du label */
+}
+
+.comment-form textarea {
+    width: 100%;             /* on peut garder 100% de la largeur du formulaire */
+    min-height: 80px;
+    padding: 8px;
+    margin-top: 5px;
+    resize: vertical;
+}
+
+.comment-form input[type="submit"] {
+    margin-top: 15px;
+    padding: 10px 15px;
+    background-color: #0066cc;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    align-self: center;      /* centre le bouton dans le formulaire */
+}
+
+.comment-form input[type="submit"]:hover {
+    background-color: #004c99;
+}
+
+/* ================= POST PRINCIPAL ================= */
+.news.post-page {
+    width: 70%;
+    margin: 30px auto;
+    padding: 25px 30px;
+    border-radius: 8px;
+    background-color: #fff4e6;   /* jaune très clair pour le post actif */
+    border: 1px solid #ffc966;  /* contour discret */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* effet “card” */
+}
+
+.news.post-page h3 {
+    background-color: #ffb84d; /* bandeau titre orange doux */
+    color: #222;
+    font-size: 1.1em;
+    padding: 10px;
+    margin: -25px -30px 15px -30px; /* couvre toute la largeur de l’encadré */
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.news.post-page p {
+    background-color: transparent; /* pas de gris qui détourne l’attention */
+    margin-top: 0;
+    line-height: 1.5em;
+    color: #333;
+}
+
+/* Headers des posts sur la page d'accueil */
+.news h3 {
+    background-color: #ffb84d; /* orange doux */
+    color: #222;
+    font-size: 1em;
+    padding: 10px;
+    margin: -20px -20px 10px -20px; /* étend le fond sur toute la largeur du post */
+    border-radius: 6px 6px 0 0; /* coins arrondis en haut */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* léger relief */
+}
+
+.news p {
+    background-color: #fffaf0; /* fond crème léger pour le contenu du post */
+    padding: 10px 15px;
+    margin: 0 0 15px 0;
+    border-radius: 0 0 6px 6px;
 }
