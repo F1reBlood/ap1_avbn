@@ -117,3 +117,18 @@ function getUsers()
 
     return $users;
 }
+
+function test_login(string $login, string $password)
+{
+    $database = dbConnect();
+
+    $statement = $database->prepare('SELECT id, name, firstname, login, email, pwd FROM user WHERE login = ? AND pwd = ?');
+    $statement->execute([$login, $password]);
+
+    $user = $statement->fetch();
+
+    $statement->closeCursor();
+
+    return $user;
+}
+?>

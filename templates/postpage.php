@@ -28,19 +28,22 @@ foreach ($comments as $comment) {
 }
 ?>
 
-<form action="index.php?action=addComment&id=<?= $post['identifier'] ?>" method="post">
-    <div>
-        <label for="author">Auteur</label><br />
-        <input type="text" id="author" name="author" />
-    </div>
-    <div>
-        <label for="comment">Commentaire</label><br />
-        <textarea id="comment" name="comment"></textarea>
-    </div>
-    <div>
-        <input type="submit" />
-    </div>
-</form>
+<?php
+if (isset($_SESSION['id'])) {
+    ?>
+    <h2>Ajouter un commentaire</h2>
+    <form action="index.php?action=addComment&id=<?= $post['identifier'] ?>" method="post">
+        <div>
+            <label for="comment">Commentaire</label><br />
+            <textarea id="comment" name="comment"></textarea>
+        </div>
+        <div>
+            <input type="submit" />
+        </div>
+    </form>
+<?php
+}
+?>
 
 <?php
 $content = ob_get_clean();
