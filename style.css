@@ -459,3 +459,54 @@ h2 {
     margin: 0 0 15px 0;
     border-radius: 0 0 6px 6px;
 }
+/* ================= TABLEAUX STATISTIQUES ================= */
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #222;
+}
+
+/* Style commun aux tableaux */
+table {
+    width: 70%;
+    margin: 20px auto;       /* centré horizontalement */
+    border-collapse: collapse;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* effet “card” */
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #fffaf0; /* fond crème doux */
+}
+
+/* En-têtes */
+table thead th {
+    background-color: #ffb84d; /* orange doux */
+    color: #222;
+    font-weight: bold;
+    padding: 12px;
+    text-align: center;
+    font-size: 1em;
+}
+
+/* Cellules */
+table tbody td {
+    padding: 12px;
+    text-align: center;
+    border-top: 1px solid #ffcc99; /* séparateur léger */
+}
+
+/* Ligne survolée */
+table tbody tr:hover {
+    background-color: #fff1e6; /* léger orange clair au survol */
+}
+
+/* Table spécifique du total (colspan=2) */
+table:first-of-type thead th {
+    background-color: #ff8c00; /* orange plus foncé pour le total */
+    color: white;
+}
+
+/* Optionnel : rendre les nombres plus visibles */
+table tbody td:nth-child(2) {
+    font-weight: bold;
+}

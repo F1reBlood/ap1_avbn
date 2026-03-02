@@ -122,7 +122,7 @@ function test_login(string $login, string $password)
 {
     $database = dbConnect();
 
-    $statement = $database->prepare('SELECT id, name, firstname, login, email, pwd FROM user WHERE login = ? AND pwd = ?');
+    $statement = $database->prepare('SELECT id, name, firstname, login, email, pwd, type FROM user WHERE login = ? AND pwd = ?');
     $statement->execute([$login, $password]);
 
     $user = $statement->fetch();
@@ -130,5 +130,38 @@ function test_login(string $login, string $password)
     $statement->closeCursor();
 
     return $user;
+}
+
+function get_comments_per_user(){
+    $database = dbConnect();
+
+    $statement = $database->query('SELECT user.login, COUNT(*) AS comments_count FROM comments JOIN user ON user.id = comments.author GROUP BY user.login ORDER BY comments_count DESC');
+
+    $results = [];
+    while ($row = $statement->fetch()) {
+        $result = [
+            'login' => $row['login'],
+            'comments_count' => $row['comments_count'],
+        ];
+
+        $results[] = $result;
+    }
+
+    $statement->closeCursor();
+
+    return $results;
+}
+
+function get_comments_count(){
+    $database = dbConnect();
+
+    $statement = $database->query('SELECT COUNT(*) AS total_comments FROM comments');
+
+    $row = $statement->fetch();
+    $total_comments = $row['total_comments'];
+
+    $statement->closeCursor();
+
+    return $total_comments;
 }
 ?>

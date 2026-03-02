@@ -6,6 +6,7 @@ require_once('src/controllers/post.php');
 require_once('src/controllers/add_comment.php');
 require_once('src/controllers/login.php');
 require_once('src/controllers/logout.php');
+require_once('src/controllers/statistics.php');
 
 if (isset($_GET['action']) && $_GET['action'] !== '') {
     if ($_GET['action'] === 'login') {
@@ -16,6 +17,10 @@ if (isset($_GET['action']) && $_GET['action'] !== '') {
     }
     elseif ($_GET['action'] === 'logout') {
         logout();
+    }
+    elseif( $_GET['action'] === 'statistics') {
+        require_once('src/controllers/statistics.php');
+        statistics();
     }
     elseif ($_GET['action'] === 'post') {
         if (isset($_GET['id']) && $_GET['id'] > 0) {

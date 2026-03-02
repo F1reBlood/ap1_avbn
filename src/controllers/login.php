@@ -16,6 +16,7 @@ function testlogin(){
         $_SESSION['firstname'] = $user['firstname'];
         $_SESSION['login'] = $user['login'];
         $_SESSION['email'] = $user['email'];
+        $_SESSION['type'] = $user['type'];
         header('Location: index.php');
         exit;
     } else {
