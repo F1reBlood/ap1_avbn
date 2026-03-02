@@ -29,7 +29,7 @@ ob_start();
         <?php foreach ($comments_per_user as $user_stat) {
             ?>
             <tr>
-                <td><?= htmlspecialchars($user_stat['login']) ?></td>
+                <td><?= htmlspecialchars($user_stat['author']) ?></td>
                 <td><?= htmlspecialchars($user_stat['comments_count']) ?></td>
             </tr>
         <?php

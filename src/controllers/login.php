@@ -6,7 +6,7 @@ function login(){
 }
 
 function testlogin(){
-    $login = $_POST['login'];
+    $login = $_POST['email'];
     $password = hash('sha256', $_POST['password']);
 
     $user = test_login($login, $password);
@@ -14,7 +14,6 @@ function testlogin(){
         $_SESSION['id'] = $user['id'];
         $_SESSION['name'] = $user['name'];
         $_SESSION['firstname'] = $user['firstname'];
-        $_SESSION['login'] = $user['login'];
         $_SESSION['email'] = $user['email'];
         $_SESSION['type'] = $user['type'];
         header('Location: index.php');

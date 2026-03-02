@@ -65,15 +65,15 @@ function getComments($id)
 {
     $database = dbConnect();
 
-    $statement = $database->prepare('SELECT comments.id, user.login, comments.comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS french_creation_date FROM comments
-    join user on comments.author=user.id WHERE post_id=? ORDER BY comment_date DESC');
+    $statement = $database->prepare('SELECT comments.id, user.firstname, user.name, comments.comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS french_creation_date 
+    FROM comments join user on comments.author=user.id WHERE post_id=? ORDER BY comment_date DESC');
     $statement->execute([$id]);
 
     $comments = [];
     while ($row = $statement->fetch()) {
 
         $comment = [
-            'author' => $row['login'],
+            'author' => $row['firstname'] . " " . $row['name'],
             'french_creation_date' => $row['french_creation_date'],
             'comment' => $row['comment'],
         ];
@@ -101,13 +101,13 @@ function getUsers()
 {
     $database = dbConnect();
 
-    $statement = $database->query('SELECT id, login FROM user');
+    $statement = $database->query('SELECT id, email FROM user');
 
     $users = [];
     while ($row = $statement->fetch()) {
         $user = [
             'id' => $row['id'],
-            'login' => $row['login'],
+            'email' => $row['email'],
         ];
 
         $users[] = $user;
@@ -118,12 +118,12 @@ function getUsers()
     return $users;
 }
 
-function test_login(string $login, string $password)
+function test_login(string $email, string $password)
 {
     $database = dbConnect();
 
-    $statement = $database->prepare('SELECT id, name, firstname, login, email, pwd, type FROM user WHERE login = ? AND pwd = ?');
-    $statement->execute([$login, $password]);
+    $statement = $database->prepare('SELECT id, name, firstname, email, pwd, type FROM user WHERE email = ? AND pwd = ?');
+    $statement->execute([$email, $password]);
 
     $user = $statement->fetch();
 
@@ -135,12 +135,12 @@ function test_login(string $login, string $password)
 function get_comments_per_user(){
     $database = dbConnect();
 
-    $statement = $database->query('SELECT user.login, COUNT(*) AS comments_count FROM comments JOIN user ON user.id = comments.author GROUP BY user.login ORDER BY comments_count DESC');
+    $statement = $database->query('SELECT user.firstname, user.name, COUNT(*) AS comments_count FROM comments JOIN user ON user.id = comments.author GROUP BY user.email ORDER BY comments_count DESC');
 
     $results = [];
     while ($row = $statement->fetch()) {
         $result = [
-            'login' => $row['login'],
+            'author' => $row['firstname'] . " " . $row['name'],
             'comments_count' => $row['comments_count'],
         ];
 
@@ -163,5 +163,40 @@ function get_comments_count(){
     $statement->closeCursor();
 
     return $total_comments;
+}
+
+function testInscription(){
+    $name = $_POST['name'];
+    $firstname = $_POST['firstname'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $confirm_password = $_POST['confirm_password'];
+
+    $database = dbConnect();
+    $statement = $database->prepare('SELECT email, pwd from user where email=?');
+    $statement->execute([$email]);
+    $existing_user = $statement->fetch();
+
+    if ($existing_user) {
+        echo 'Un utilisateur avec cet email existe déjà.';
+        return;
+    }
+
+    if ($password !== $confirm_password) {
+        echo 'Les mots de passe ne correspondent pas.';
+        return;
+    }
+
+    addUserToBDD($name, $firstname, $email, $password);
+    header('Location: index.php?action=login');
+}
+
+function addUserToBDD(string $name, string $firstname, string $email, string $password){
+    $database = dbConnect();
+    $statement = $database->prepare(
+        'INSERT INTO user(name, firstname, email, pwd, type) VALUES(?, ?, ?, ?, 0)'
+    );
+    
+    $statement->execute([$name, $firstname, $email, hash('sha256', $password)]);
 }
 ?>
