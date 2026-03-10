@@ -8,6 +8,7 @@ require_once('src/controllers/login.php');
 require_once('src/controllers/logout.php');
 require_once('src/controllers/statistics.php');
 require_once('src/controllers/inscription.php');
+require_once('src/controllers/profile.php');
 
 if (isset($_GET['action']) && $_GET['action'] !== '') {
     if ($_GET['action'] === 'login' && !isset($_SESSION['id'])) {
@@ -20,7 +21,6 @@ if (isset($_GET['action']) && $_GET['action'] !== '') {
         logout();
     }
     elseif ($_GET['action'] === 'statistics' && isset($_SESSION['type']) && $_SESSION['type'] == '1') {
-        require_once('src/controllers/statistics.php');
         statistics();
     }
     elseif ($_GET['action'] === 'inscription' && !isset($_SESSION['id'])) {
@@ -28,6 +28,12 @@ if (isset($_GET['action']) && $_GET['action'] !== '') {
     }
     elseif ($_GET['action'] === 'testInscription' && !isset($_SESSION['id'])) {
         testInscription();
+    }
+    elseif ($_GET['action'] === 'profile' && isset($_SESSION['id'])) {
+        profile();
+    }
+    elseif ($_GET['action'] === 'updateProfile' && isset($_SESSION['id'])) {
+        updateProfile();
     }
     elseif ($_GET['action'] === 'post') {
         if (isset($_GET['id']) && $_GET['id'] > 0) {

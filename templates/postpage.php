@@ -39,6 +39,20 @@ if (isset($_SESSION['id'])) {
             <label for="comment">Commentaire</label><br />
             <textarea id="comment" name="comment"></textarea>
         </div>
+        
+            <?php
+            if (isset($_GET['error']) && $_GET['error'] == 1) {
+                ?>
+                <p class="form-error"> <?php echo 'Erreur : Le commentaire est vide.' ?> </p>
+                <?php
+            }
+            elseif (isset($_GET['error']) && $_GET['error'] == 0) {
+                ?>
+                <p class="form-success"> <?php echo 'Le commentaire a été créé avec succès' ?></p>
+                <?php
+            }
+            ?>
+        
         <div>
             <input type="submit" />
         </div>

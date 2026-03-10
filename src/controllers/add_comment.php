@@ -9,9 +9,9 @@ function addComment(string $post, string $comment)
         if (!$success) {
             die('Impossible d\'ajouter le commentaire !');
         } else {
-            header('Location: index.php?action=post&id=' . $post);
+            header('Location: index.php?action=post&id=' . $post . '&error=0');
         }
     } else {
-        die('Les données du formulaire sont invalides.');
+        header('Location: index.php?action=post&id=' . $post . '&error=1');
     }
 }

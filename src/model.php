@@ -199,4 +199,42 @@ function addUserToBDD(string $name, string $firstname, string $email, string $pa
     
     $statement->execute([$name, $firstname, $email, hash('sha256', $password)]);
 }
+
+function updateProfile(){
+    $name = $_POST['name'];
+    $firstname = $_POST['firstname'];
+    $email = $_POST['email'];
+    $old_password = $_POST['old_password'];
+    $new_password = $_POST['new_password'];
+
+    $database = dbConnect();
+    $statement = $database->prepare('SELECT email, pwd from user where id=?');
+    $statement->execute([$_SESSION['id']]);
+    $user = $statement->fetch();
+
+    if ($new_password == '' && $old_password == ''){
+        $statement = $database->prepare('UPDATE user SET name=?, firstname=?, email=? WHERE id=?');
+        $statement->execute([$name, $firstname, $email, $_SESSION['id']]);
+
+        $_SESSION['name'] = $name;
+        $_SESSION['firstname'] = $firstname;
+        $_SESSION['email'] = $email;
+    }
+    else{
+        if (hash('sha256', $old_password) !== $user['pwd']) {
+        header('Location: index.php?action=profile&error=1');
+            return;
+        }
+
+        $statement = $database->prepare('UPDATE user SET name=?, firstname=?, email=?, pwd=? WHERE id=?');
+        $statement->execute([$name, $firstname, $email, hash('sha256', $new_password), $_SESSION['id']]);
+
+        $_SESSION['name'] = $name;
+        $_SESSION['firstname'] = $firstname;
+        $_SESSION['email'] = $email;
+    }
+
+    header('Location: index.php?action=profile&error=0');
+}
+
 ?>

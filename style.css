@@ -510,3 +510,37 @@ table:first-of-type thead th {
 table tbody td:nth-child(2) {
     font-weight: bold;
 }
+
+/* ================= MESSAGES FORMULAIRES ================= */
+
+/* message de validation */
+.form-success {
+    font-size: 0.8em;
+    color: #2e8b57; /* vert */
+    margin-bottom: 3px;
+    display: block;
+    text-align: center;
+}
+
+/* message d'erreur */
+.form-error {
+    font-size: 0.8em;
+    color: #cc0000; /* rouge */
+    margin-bottom: 3px;
+    display: block;
+    text-align: center;
+}
+
+/* message d'information */
+.form-info {
+    font-size: 0.8em;
+    color: #666; /* gris discret */
+    margin-top: 10px;
+    text-align: center;
+}
+
+.form-info a {
+    color: #0066cc;
+    font-weight: bold;
+    text-align: center;
+}
