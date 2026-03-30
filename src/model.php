@@ -237,4 +237,21 @@ function updateProfile(){
     header('Location: index.php?action=profile&error=0');
 }
 
+function addPost(){
+    $title = $_POST['title'];
+    $content = $_POST['content'];
+
+    if (!empty($title) && !empty($content)) {
+        $database = dbConnect();
+        $statement = $database->prepare(
+            'INSERT INTO posts(title, content, creation_date) VALUES(?, ?, NOW())'
+        );
+        $statement->execute([$title, $content]);
+
+        header('Location: index.php');
+    } else {
+        echo 'Erreur : Le titre et le contenu ne peuvent pas être vides.';
+    }
+}
+
 ?>

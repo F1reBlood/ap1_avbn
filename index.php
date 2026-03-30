@@ -35,6 +35,9 @@ if (isset($_GET['action']) && $_GET['action'] !== '') {
     elseif ($_GET['action'] === 'updateProfile' && isset($_SESSION['id'])) {
         updateProfile();
     }
+    elseif ($_GET['action'] === 'addPost' && isset($_SESSION['type']) && $_SESSION['type'] === 1) {
+        addPost();
+    }
     elseif ($_GET['action'] === 'post') {
         if (isset($_GET['id']) && $_GET['id'] > 0) {
             $identifier = $_GET['id'];

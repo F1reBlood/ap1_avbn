@@ -37,7 +37,7 @@ if (isset($_SESSION['id'])) {
     <form action="index.php?action=addComment&id=<?= $post['identifier'] ?>" method="post">
         <div>
             <label for="comment">Commentaire</label><br />
-            <textarea id="comment" name="comment"></textarea>
+            <textarea id="comment" name="comment" required></textarea>
         </div>
         
             <?php

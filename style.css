@@ -544,3 +544,81 @@ table tbody td:nth-child(2) {
     font-weight: bold;
     text-align: center;
 }
+
+/* ================= FORMULAIRE POST ================= */
+
+.form-card {
+    background-color: #fff4e6;   /* même style que post-page */
+    border: 1px solid #ffc966;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    border-radius: 8px;
+}
+
+/* titre du formulaire (comme les posts) */
+.form-card h3 {
+    background-color: #ffb84d;
+    color: #222;
+    padding: 10px;
+    margin: -20px -20px 20px -20px;
+    border-radius: 6px 6px 0 0;
+    text-align: center;
+}
+
+/* structure interne */
+.form-post {
+    width: 100%;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+/* label */
+.form-post label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* textarea */
+.form-post textarea {
+    width: 100%;
+    min-height: 120px;
+    padding: 10px;
+    border: 1px solid #ffcc99;
+    border-radius: 5px;
+    background-color: #fffaf0;
+    resize: vertical;
+}
+
+/* bouton */
+.form-post input[type="submit"] {
+    display: block;
+    width: 50%;
+    margin: 20px auto 0 auto;
+    padding: 10px;
+    background-color: #ff8c00;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.form-post input[type="submit"]:hover {
+    background-color: #e67300;
+}
+
+.form-post {
+    background-color: transparent;
+}
+
+.form-post input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ffcc99;
+    border-radius: 5px;
+    background-color: #fffaf0;
+    margin-top: 5px;
+}
