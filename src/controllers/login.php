@@ -19,7 +19,7 @@ function testlogin(){
         header('Location: index.php');
         exit;
     } else {
-        echo 'Login ou mot de passe incorrect.';
+        header('Location: index.php?action=login&error=1');
     }
 }
 

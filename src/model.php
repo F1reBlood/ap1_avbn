@@ -178,12 +178,14 @@ function testInscription(){
     $existing_user = $statement->fetch();
 
     if ($existing_user) {
-        echo 'Un utilisateur avec cet email existe déjà.';
+        // Erreur : Existing User
+        header('Location: index.php?action=inscription&error=eu');
         return;
     }
 
     if ($password !== $confirm_password) {
-        echo 'Les mots de passe ne correspondent pas.';
+        // Erreur : Wrong Password
+        header('Location: index.php?action=inscription&error=wp');
         return;
     }
 

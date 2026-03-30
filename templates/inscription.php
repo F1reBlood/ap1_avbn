@@ -29,7 +29,17 @@
             <label for="confirm_password">Confirmer le mot de passe</label>
             <input type="password" id="confirm_password" name="confirm_password" required/>
         </div>
-        <br />
+        <?php
+        if (isset($_GET['error']) && $_GET['error'] == 'eu') {
+            echo '<p class="form-error">Un utilisateur avec cet email existe déjà.</p>';
+        }
+        elseif (isset($_GET['error']) && $_GET['error'] == 'wp') {
+            echo '<p class="form-error">Les mots de passe ne correspondent pas.</p>';
+        }
+        else{
+            ?> <br /> <?php
+        }
+        ?>
         <div>
             <input type="submit" value="S'inscrire" />
         </div>

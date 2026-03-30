@@ -12,7 +12,14 @@
             <label for="password">Mot de passe</label>
             <input type="password" id="password" name="password" />
         </div>
-        <br />
+        <?php
+        if (isset($_GET['error']) && $_GET['error'] == 1) {
+            echo '<p class="form-error">L\'email ou le mot de passe est incorrect.</p>';
+        }
+        else{
+            ?> <br /> <?php
+        } ?>
+        
         <div>
             <input type="submit" value="Se connecter" />
         </div>
